@@ -1,0 +1,16 @@
+{
+  "name": "supporting-material-manager",
+  "version": "1.0.0",
+  "description": "Gravitate-Health Content Manager",
+  "main": "build/index.js",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2"
+  }
+}

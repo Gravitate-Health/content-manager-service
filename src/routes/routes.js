@@ -3,6 +3,6 @@ const minioController = require("../controllers/RetrieverController")
 
 const SupportingMaterialRoutes = Router();
 
-SupportingMaterialRoutes.get("/test",minioController.)
+SupportingMaterialRoutes.get("/test",minioController.testConn)
 
 module.exports = SupportingMaterialRoutes

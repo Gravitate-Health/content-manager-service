@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { RetrieverController } from "../controllers/RetrieverController";
+import * as minioController  from "../controllers/RetrieverController";
 
 export const SupportingMaterialRoutes: Router = Router();
 
-SupportingMaterialRoutes.get("/", RetrieverController.retrieve);
+SupportingMaterialRoutes.get("/test",minioController.testConn);

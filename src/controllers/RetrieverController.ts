@@ -1,7 +1,11 @@
-import e from "express";
+import  { Request, Response } from "express";
+import { minioClient } from "../minioConfig"
 
-export class RetrieverController {
-  public static retrieve(req: e.Request, res: e.Response) {
-    res.send("Supporting Material Manager\n").status(200);
+export const testConn = async (_req: Request, res: Response) : Promise<Response> => { 
+  try {
+    const buckets = await minioClient.listBuckets()
+    return res.status(200).send("Connected to minio" + buckets)
+  } catch (err) {
+    return res.status(400).send("Unable to connect to minio")
   }
 }

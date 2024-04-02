@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: Gravitate Health Supporting material manager API Interface
+  version: MVP3
+  description: Gravitate Health supporting material manager.
+  contact: {}
+servers:
+  - url: https://fosps.gravitatehealth.eu
+paths:
+  /smm/resource/{resourceId}:
+    get:
+      parameters:
+        - in: path
+          name: resourceId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get
+      tags:
+        - Preprocessing
+      description: Returns the specified resource by id.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaterialURL'
+
+components:
+  schemas:
+    MaterialURL:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Response to dowload the resource
+      example:
+        url: https://fosps.gravitatehealth.eu/http://gh-bucket/example.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=9RLSE0EPDCNSV3YG3TK4%2F20240402%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240402T102957Z&X-Amz-Expires=43200&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiI5UkxTRTBFUERDTlNWM1lHM1RLNCIsImV4cCI6MTcxMjA5NjEyMSwicGFyZW50IjoiYWRtaW4ifQ.CGeQRN_eHP6uhhK0uemASS25MRuq96I12fsYO1P7EaQgX5Hj16Sqs0Imf8bqjaoScACq-JzZCpxZzEgyvScX1w&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=8e9f5bba8a49ef1c9a1fa63738c88ba7057ed3d5dd11ced95a4ca3072207599e
+  parameters:
+    resourceId:
+      in: path
+      name: resourceId
+      description: Id to find in the FHIR server the associated surting material.
+      required: true
+      schema:
+        type: string

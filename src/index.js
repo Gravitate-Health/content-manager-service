@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use("/rmm", SupportingMaterialRoutes);
+app.use("/smm", SupportingMaterialRoutes);
 app.listen(PORT, () => {
   console.log(`Focusing manager listening on port ${PORT}`)
 })

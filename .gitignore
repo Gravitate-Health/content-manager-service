@@ -72,3 +72,5 @@ typings/
 # act tool
 event.json
 *.secrets
+
+.vscode/

@@ -10,7 +10,7 @@ const SupportingMaterialRoutes = Router();
 
 SupportingMaterialRoutes.get("/test",minioController.testConn)
 
-SupportingMaterialRoutes.post("/upload", upload.single('file'), minioController.uploadFile)
+SupportingMaterialRoutes.post("/create", upload.single('file'), minioController.uploadFile)
 
 SupportingMaterialRoutes.get("/resource/:id",minioController.retrieveFile)
 

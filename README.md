@@ -20,6 +20,8 @@
 
 ## Deployment
 
+First, in order to set up the Bucket an 
+
 ### List of env variables 
 
 | Variable name | Example value | Description|
@@ -36,7 +38,7 @@
 
 ## Development
 
-To set up a development min.io server run 
+To set up a development min.io server on docker run:
 
 ```yaml
 docker run \

@@ -10,4 +10,4 @@ data:
   SECRET_KEY: ""
   FHIR_URL: "gravitate-health.lst.tfo.upm.es/ips/api/fhir/"
   GH_BUCKET: "gh-bucket"
-  API_URL: "gravitate-health.lst.tfo.upm.es/smm"
+  API_URL: "gravitate-health.lst.tfo.upm.es/bucket"

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: smm
-          image: example:latest
+          image: gravitate-registry.cr.de-fra.ionos.com/smm-service:latest 
           ports:
             - containerPort: 3000
           envFrom:

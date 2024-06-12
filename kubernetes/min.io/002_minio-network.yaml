@@ -30,7 +30,7 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /bucket/
+            prefix: /smm/
       rewrite:
         uri: "/"
       route:

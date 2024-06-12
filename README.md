@@ -20,7 +20,50 @@
 
 ## Deployment
 
-First, in order to set up the Bucket an 
+First, in order to set up the Bucket you have to modify the [ConfigMap](./kubernetes/001_config-map.yaml) resource with the desired credentials
+
+```yaml
+
+  APP_PORT: "3000"
+  MINIO_URL: "" #depending of the environment
+  MINIO_PORT: "9000"
+  ACCESS_KEY: "" 
+  SECRET_KEY: ""
+  FHIR_URL: "gravitate-health.lst.tfo.upm.es/ips/api/fhir/"
+  GH_BUCKET: "gh-bucket"
+  API_URL: "gravitate-health.lst.tfo.upm.es/smm"
+```
+
+Then there is two options depending on the desired usage:
+
+#### Testing 
+
+Simply set up a MinIO pod by 
+
+```shell
+kubectl apply -f ./kubernetes/min.io/001_minio-pod.yaml
+```
+and then configure the service and de virtual service for istio
+
+```shell
+kubectl apply -f ./kubernetes/min.io/002_minio-network.yaml
+```
+
+#### Production
+
+By seting up the deployment the state pods will be managed by kubernetes 
+
+```shell
+kubectl apply -f ./kubernetes/min.io/001_minio-deployment.yaml
+```
+and then configure the service and de virtual service for istio
+
+```shell
+kubectl apply -f ./kubernetes/min.io/002_minio-network.yaml
+
+#### Security guidelines
+
+By following the instructions on the [MinIO documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html#minio-authentication-and-identity-management) you can set the IAM through OIDC for the integration with Keycloak
 
 ### List of env variables 
 

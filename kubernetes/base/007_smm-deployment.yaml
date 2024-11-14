@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smm
+  template:
+    metadata:
+      labels:
+        app: smm
+    spec:
+      containers:
+        - name: smm
+          image: gravitate-registry.cr.de-fra.ionos.com/smm-service:latest 
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: smm-config
+          env:
+          - name: ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: minio-secret
+                key: minio.root.user
+                optional: false
+          - name: SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: minio-secret
+                key: minio.root.password
+                optional: false
+          resources: {}
+          #  limits:
+          #    cpu: "1"
+          #    memory: "512Mi"
+          #  requests:
+          #    cpu: "0.5"
+          #    memory: "256Mi"

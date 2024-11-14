@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - 001_minio-service.yaml
+  - 002_minio-virtual-service.yaml
+  - 003_minio-pvc.yaml
+  - 004_minio-deployment.yaml
+  - 005_smm-service.yaml
+  - 006_config-map.yaml
+  - 007_smm-deployment.yaml
+  - 008_smm-virtual-service.yaml

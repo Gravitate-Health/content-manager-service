@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: smm-config
+data:
+  APP_PORT: "3000"
+  MINIO_URL: "minio-service"
+  MINIO_PORT: "9000"
+  FHIR_URL: "fosps.gravitatehealth.eu/ips/api/fhir/"
+  GH_BUCKET: "gh-bucket"
+  API_URL: "fosps.gravitatehealth.eu/bucket"

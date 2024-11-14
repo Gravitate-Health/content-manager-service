@@ -8,6 +8,8 @@
   - [Table of contents](#table-of-contents)
   - [Requirements](#requirements)
   - [Deployment](#deployment)
+    - [Security guidelines for MinIO](#security-guidelines-for-minio)
+    - [List of env variables](#list-of-env-variables)
   - [Development](#development)
   - [Getting help](#getting-help)
   - [Contributing](#contributing)
@@ -20,60 +22,25 @@
 
 ## Deployment
 
-There is two options depending on the desired usage:
-
-#### Testing 
-
-Simply set up a MinIO pod by 
-
 ```shell
-kubectl apply -f ./kubernetes/min.io/001_minio-pod.yaml
-```
-and then configure the service and de virtual service for istio
 
-```shell
-kubectl apply -f ./kubernetes/min.io/002_minio-network.yaml
-```
+# Create K8s secret for Minio and minio client WITH YOUR OWN VALUES
+kubectl create secret generic minio-secret \
+        --from-literal=minio.root.user=MINIO_ROOT_USER_STRING \
+        --from-literal=minio.root.password=MINIO_ROOT_PASSWORD_STRING 
 
-#### Production
+# Production deployment
+kubectl apply -k ./kubernetes/base
 
-By seting up the deployment the state pods will be managed by kubernetes 
-
-```shell
-kubectl apply -f ./kubernetes/min.io/001_minio-deployment.yaml
-```
-and then configure the service and de virtual service for istio
-
-```shell
-kubectl apply -f ./kubernetes/min.io/002_minio-network.yaml
+# Development deployment
+kubectl apply -k ./kubernetes/dev
 ```
 
-#### Security guidelines for MinIO
+### Security guidelines for MinIO
 
 By following the instructions on the [MinIO documentation](https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management.html#minio-authentication-and-identity-management) you can set the IAM through OIDC for the integration with Keycloak
 
-#### Service deployment
 
-First, in order to set up the service config you have to modify the [ConfigMap](./kubernetes/001_config-map.yaml) resource with the desired credentials of the minIO bucket and FHIR url
-
-```yaml
-
-  APP_PORT: "3000"
-  MINIO_URL: "" #depending of the environment
-  MINIO_PORT: "9000"
-  ACCESS_KEY: "" 
-  SECRET_KEY: ""
-  FHIR_URL: "gravitate-health.lst.tfo.upm.es/ips/api/fhir/"
-  GH_BUCKET: "gh-bucket"
-  API_URL: "gravitate-health.lst.tfo.upm.es/bucket"
-```
-
-```shell
-kubectl apply -f kubernetes/001_config-map.yaml
-kubectl apply -f ./kubernetes/002_smm-deployment.yaml
-kubectl apply -f ./kubernetes/003_smm-network.yaml
-
-```
 
 ### List of env variables 
 
@@ -137,3 +104,4 @@ limitations under the License.
 Authors and history
 ---------------------------
 - Alejo Esteban ([@10alejospain](https://github.com/10alejospain))
+- Guillermo Mejías ([@gmej](https://github.com/gmej))

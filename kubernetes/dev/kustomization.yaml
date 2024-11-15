@@ -5,4 +5,4 @@ resources:
 patches:
 
 - path: 004_minio-deployment.yaml
-- path: 006_config-map.yaml
+- path: 006_smm-config-map.yaml

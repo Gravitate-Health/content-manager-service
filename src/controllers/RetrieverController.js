@@ -26,7 +26,7 @@ async function uploadFile (req, res) {
   const imageBuffer = req.file.buffer;
   const imageName = req.file.originalname;
   const bucketName = process.env.GH_BUCKET;
-  const url = "https://" + process.env.FHIR_URL + "DocumentReference"
+  const url = process.env.FHIR_URL + "/DocumentReference"
   const fileInfo = JSON.parse(req.body.fileInfo);
 
   let fhirId

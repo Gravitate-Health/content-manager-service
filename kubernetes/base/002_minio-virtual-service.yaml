@@ -11,8 +11,10 @@ spec:
     - match:
         - uri:
             prefix: /bucket/
-      #rewrite:
-      #  uri: "/"
+        - uri:
+            exact: /bucket
+      rewrite:
+        uri: "/"
       route:
         - destination:
             host: minio-service.default.svc.cluster.local

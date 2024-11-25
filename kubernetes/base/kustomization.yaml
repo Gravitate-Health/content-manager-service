@@ -6,6 +6,7 @@ resources:
   - 002_minio-virtual-service.yaml
   - 003_minio-pvc.yaml
   - 004_minio-deployment.yaml
+  - 004_minio-configure-minio-job.yaml
   - 005_smm-service.yaml
   - 006_smm-config-map.yaml
   - 007_smm-deployment.yaml

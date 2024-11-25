@@ -24,8 +24,6 @@ spec:
         args: 
         - |
           minio server /data --console-address :9001
-          mc alias set myminio http://minio-service:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD && \
-          mc mb --ignore-existing myminio/gh-bucket
         env:
         - name: MINIO_ROOT_USER
           valueFrom:
@@ -46,32 +44,7 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /data
-          name: minio-storage 
-      
-      #- name: create-bucket
-      #  image: quay.io/minio/mc:latest
-      #  command: ["/bin/sh", "-c"]
-      #  args:
-      #  - |
-      #    mc alias set myminio http://minio-service:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD && \
-      #    mc mb --ignore-existing myminio/gh-bucket
-      #  env:
-      #  - name: MINIO_ROOT_USER
-      #    valueFrom:
-      #      secretKeyRef:
-      #        name: minio-secret
-      #        key: minio.root.user
-      #        optional: false
-      #  - name: MINIO_ROOT_PASSWORD
-      #    valueFrom:
-      #      secretKeyRef:
-      #        name: minio-secret
-      #        key: minio.root.password
-      #        optional: false
-      #  resources: {}
-      #  volumeMounts:
-      #  - mountPath: /data
-      #    name: minio-storage 
+          name: minio-storage
       volumes:
       - name: minio-storage
         persistentVolumeClaim:

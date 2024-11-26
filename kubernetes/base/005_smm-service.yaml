@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: smm-service
+  name: supporting-material-manager
 spec:
   selector:
-    app: smm
+    app: supporting-material-manager
   ports:
     - protocol: TCP
       port: 3000

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: smm-config
+  name: supporting-material-manager
 data:
   APP_PORT: "3000"
   MINIO_URL: "minio-service"

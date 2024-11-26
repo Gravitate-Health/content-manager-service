@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: smm
+  name: supporting-material-manager
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: smm
+      app: supporting-material-manager
   template:
     metadata:
       labels:
-        app: smm
+        app: supporting-material-manager
     spec:
       containers:
-        - name: smm
-          image: gravitate-registry.cr.de-fra.ionos.com/smm-service:latest 
+        - name: supporting-material-manager
+          image: gravitate-registry.cr.de-fra.ionos.com/supporting-material-manager:latest 
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
-                name: smm-config
+                name: supporting-material-manager
           env:
           - name: ACCESS_KEY
             valueFrom:

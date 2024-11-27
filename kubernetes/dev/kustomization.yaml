@@ -6,3 +6,4 @@ patches:
 
 - path: 004_minio-deployment.yaml
 - path: 006_smm-config-map.yaml
+- path: 007_smm-deployment.yaml

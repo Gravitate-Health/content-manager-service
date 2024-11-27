@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supporting-material-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supporting-material-manager
+  template:
+    spec:
+      containers:
+        - name: supporting-material-manager
+          image: gravitate-registry.cr.de-fra.ionos.com/supporting-material-manager:latest
+          resources: {}
